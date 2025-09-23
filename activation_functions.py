@@ -1,11 +1,23 @@
 import numpy as np
 
-def ReLU(z):
-    z = np.array(z)
-    return max(0, z)
+class Activation:
+    def __init__(self, func, derivative):
+        self.func = func
+        self.derivative = derivative
+
+    def __call__(self, z):
+        return self.func(z)
 
 
-def sigmoid(z, a=1):
-    z = np.array(z)
-    return 1 / (1 + np.exp(-a * z))
+sigmoid = Activation(
+    func=lambda z: 1 / (1 + np.exp(-z)),
+    derivative=lambda z: (1 / (1 + np.exp(-z))) * (1 - 1 / (1 + np.exp(-z)))
+)
+
+
+relu = Activation(
+    func=lambda z: np.maximum(0, z),
+    derivative=lambda z: (z > 0).astype(float)
+)
+
 
