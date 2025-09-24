@@ -21,3 +21,8 @@ relu = Activation(
 )
 
 
+identity = Activation(
+    func=lambda z: z,
+    derivative=lambda z: 1
+)
+
