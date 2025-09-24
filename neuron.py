@@ -37,7 +37,7 @@ class Neuron():
     
 
     def backward(self, error):
-        d_activation = self.activation_derivative(self.last_output)
+        d_activation = self.activation_derivative(self.last_z)
         delta = error * d_activation  
 
         d_weights = delta * self.last_input
@@ -66,5 +66,5 @@ if __name__ == "__main__":
 
 print("Final weights:", neuron.weights)
 print("Final bias:", neuron.bias)
-print("Test prediction:", neuron.forward(X))
+print("Test prediction:", neuron.forward([4, 7]))
 
