@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Activation:
     def __init__(self, func, derivative):
         self.func = func
@@ -25,4 +26,3 @@ identity = Activation(
     func=lambda z: z,
     derivative=lambda z: 1
 )
-
